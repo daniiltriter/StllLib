@@ -8,4 +8,8 @@
         <RootNamespace>Playground</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Stll.Library\Stll.Library.csproj" />
+    </ItemGroup>
+
 </Project>
