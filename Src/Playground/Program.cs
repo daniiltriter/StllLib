@@ -16,13 +16,19 @@ var provider = services.BuildServiceProvider();
 
 var stllApi = provider.GetService<IStllApiProvider>();
 
-var tokenRequest = new AuthTokenRequest
+var registerUserRequest = new RegisterUserRequest("username", "#Password123!");
+var registerResponse = await stllApi.UsersBridge.RegisterAsync(registerUserRequest);
+if (!registerResponse.Success)
 {
-    Name = "user",
-    Password = "password"
-};
+    Console.WriteLine($"CODE: {registerResponse.Code}; ERROR: {registerResponse.Error}");
+}
 
-var bridgeResult = await stllApi.AuthBridge.GetTokenAsync(tokenRequest);
+var accessTokenRequest = new AuthTokenRequest("username", "#Password123!");
+var tokenResponse = await stllApi.AuthBridge.GetTokenAsync(accessTokenRequest);
+if (!tokenResponse.Success)
+{
+    Console.WriteLine($"CODE: {tokenResponse.Code}; ERROR: {tokenResponse.Error}");
+}
 
 
-Console.WriteLine(bridgeResult.Content);
+Console.WriteLine(tokenResponse.Content);
