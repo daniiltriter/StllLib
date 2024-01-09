@@ -22,5 +22,7 @@ var tokenRequest = new AuthTokenRequest
     Password = "password"
 };
 
-var token = await stllApi.AuthBridge.GetTokenAsync(tokenRequest);
-Console.WriteLine(token);
+var bridgeResult = await stllApi.AuthBridge.GetTokenAsync(tokenRequest);
+
+
+Console.WriteLine(bridgeResult.Value.AccessToken);

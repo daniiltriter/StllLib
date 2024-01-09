@@ -1,8 +1,9 @@
 ﻿using Stll.Library.Implementation.Types;
+using Stll.Library.Public.Results;
 
 namespace Stll.Library.Implementation.Interfaces;
 
 public interface IAuthenticationBridge
 {
-    Task<string> GetTokenAsync(AuthTokenRequest request);
+    Task<ApiBridgeResponse<AuthBridgeTokenResult>> GetTokenAsync(AuthTokenRequest request);
 }

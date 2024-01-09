@@ -6,5 +6,5 @@ namespace Stll.Library.Api.Interfaces;
 internal interface IAuthenticationApi
 {
     [Post("/api/oauth2/token")]
-    Task<string> Token([Body]JwtTokenApiRequest request);
+    Task<ApiResponse<string>> Token([Body]JwtTokenApiRequest request);
 }
