@@ -8,7 +8,7 @@ using Stll.Library.Settings;
 
 namespace Stll.Library.Implementation.Services;
 
-public class AuthenticationBridge : IAuthenticationBridge
+internal class AuthenticationBridge : IAuthenticationBridge
 {
     private readonly IAuthenticationApi _api;
 

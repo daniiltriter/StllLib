@@ -2,7 +2,7 @@
 
 namespace Stll.Library.Abstractions;
 
-public interface IApiProvider
+public interface IStllApiProvider
 {
-    IAuthenticationBridge AuthenticationBridge { get; }
+    IAuthenticationBridge AuthBridge { get; }
 }
