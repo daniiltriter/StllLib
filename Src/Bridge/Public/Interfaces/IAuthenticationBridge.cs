@@ -1,7 +1,7 @@
-﻿using Stll.Bridge.Implementation.Types;
+﻿using Stll.Bridge.Public.Types;
 using Stll.Bridge.Public.Results;
 
-namespace Stll.Bridge.Implementation.Interfaces;
+namespace Stll.Bridge.Public.Interfaces;
 
 public interface IAuthenticationBridge
 {

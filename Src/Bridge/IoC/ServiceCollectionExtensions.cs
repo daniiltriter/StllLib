@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Stll.Bridge.Abstractions;
-using Stll.Bridge.Implementation.Interfaces;
-using Stll.Bridge.Implementation.Services;
+using Stll.Bridge.Public.Services;
+using Stll.Bridge.Public.Interfaces;
 using Stll.Bridge.Services;
 using Stll.Bridge.Settings;
 

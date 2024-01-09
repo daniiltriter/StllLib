@@ -1,4 +1,4 @@
-﻿using Stll.Bridge.Implementation.Interfaces;
+﻿using Stll.Bridge.Public.Interfaces;
 
 namespace Stll.Bridge.Abstractions;
 

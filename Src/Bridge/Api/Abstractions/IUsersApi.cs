@@ -1,9 +1,9 @@
 ﻿using Refit;
 using Stll.Bridge.Api.Objects;
 
-namespace Stll.Bridge.Api.Interfaces;
+namespace Stll.Bridge.Api.Abstractions;
 
-public interface IUsersApi
+internal interface IUsersApi
 {
     [Post("/api/users")]
     Task<ApiResponse<string>> RegisterAsync([Body]RegisterUserApiRequest request);

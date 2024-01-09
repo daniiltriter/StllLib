@@ -1,9 +1,9 @@
 ﻿using Stll.Bridge.Abstractions;
-using Stll.Bridge.Implementation.Interfaces;
+using Stll.Bridge.Public.Interfaces;
 
 namespace Stll.Bridge.Services;
 
-public class StllApiProvider : IStllApiProvider
+internal class StllApiProvider : IStllApiProvider
 {
     public StllApiProvider(IAuthenticationBridge authenticationBridge)
     {
