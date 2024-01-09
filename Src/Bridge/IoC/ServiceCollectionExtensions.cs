@@ -4,6 +4,8 @@ using Stll.Bridge.Public.Services;
 using Stll.Bridge.Public.Interfaces;
 using Stll.Bridge.Services;
 using Stll.Bridge.Settings;
+using Stll.Library.Public.Interfaces;
+using Stll.Library.Public.Services;
 
 namespace Stll.Bridge.IoC;
 
@@ -13,7 +15,9 @@ public static class ServiceCollectionExtensions
     {
         services.AddOptions<ApiSettings>();
         services.Configure(settingsModifier);
+        
         services.AddSingleton<IAuthenticationBridge, AuthenticationBridge>();
+        services.AddSingleton<IUsersBridge, UsersBridge>();
 
         services.AddSingleton<IStllApiProvider, StllApiProvider>();
         
