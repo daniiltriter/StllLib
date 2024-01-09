@@ -1,15 +1,15 @@
 ﻿using System.Text.Json;
 using Microsoft.Extensions.Options;
 using Refit;
-using Stll.Library.Api.Interfaces;
-using Stll.Library.Api.Objects;
-using Stll.Library.Implementation.Interfaces;
-using Stll.Library.Implementation.Types;
-using Stll.Library.Internal.Extensions;
-using Stll.Library.Public.Results;
-using Stll.Library.Settings;
+using Stll.Bridge.Internal.Extensions;
+using Stll.Bridge.Api.Interfaces;
+using Stll.Bridge.Api.Objects;
+using Stll.Bridge.Implementation.Interfaces;
+using Stll.Bridge.Implementation.Types;
+using Stll.Bridge.Public.Results;
+using Stll.Bridge.Settings;
 
-namespace Stll.Library.Implementation.Services;
+namespace Stll.Bridge.Implementation.Services;
 
 internal class AuthenticationBridge : IAuthenticationBridge
 {
@@ -20,7 +20,7 @@ internal class AuthenticationBridge : IAuthenticationBridge
         _api = RestService.For<IAuthenticationApi>(settings.Value.ApiUrl);
     }
     
-    public async Task<ApiBridgeResponse<AuthBridgeTokenResult>> GetTokenAsync(AuthTokenRequest request)
+    public async Task<ApiBridgeResponse> GetTokenAsync(AuthTokenRequest request)
     {
         var apiRequest = new JwtTokenApiRequest
         {
@@ -28,6 +28,6 @@ internal class AuthenticationBridge : IAuthenticationBridge
             Password = request.Password
         };
         var apiResponse = await _api.Token(apiRequest);
-        return apiResponse.ToBridgeResponse<AuthBridgeTokenResult>();
+        return apiResponse.ToBridgeResponse();
     }
 }

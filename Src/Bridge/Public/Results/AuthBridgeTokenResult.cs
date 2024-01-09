@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Stll.Library.Public.Results;
+namespace Stll.Bridge.Public.Results;
 
 public class AuthBridgeTokenResult
 {

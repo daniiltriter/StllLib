@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stll.Library", "Src\Stll.Library\Stll.Library.csproj", "{CDCF64EF-B18C-4D0F-B47B-17BD96986B3B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridge", "Src\Bridge\Bridge.csproj", "{CDCF64EF-B18C-4D0F-B47B-17BD96986B3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stll.Playground", "Src\Stll.Playground\Stll.Playground.csproj", "{DE5DBABA-ACFB-4611-9F62-3211A3E971AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground", "Src\Playground\Playground.csproj", "{DE5DBABA-ACFB-4611-9F62-3211A3E971AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

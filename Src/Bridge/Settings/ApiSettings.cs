@@ -1,4 +1,4 @@
-﻿namespace Stll.Library.Settings;
+﻿namespace Stll.Bridge.Settings;
 
 public class ApiSettings
 {

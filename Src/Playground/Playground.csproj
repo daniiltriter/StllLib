@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Stll.Library\Stll.Library.csproj" />
+      <ProjectReference Include="..\Bridge\Bridge.csproj" />
     </ItemGroup>
 
 </Project>

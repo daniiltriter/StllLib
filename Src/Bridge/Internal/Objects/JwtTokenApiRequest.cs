@@ -1,4 +1,4 @@
-﻿namespace Stll.Library.Api.Objects;
+﻿namespace Stll.Bridge.Api.Objects;
 
 internal class JwtTokenApiRequest
 {

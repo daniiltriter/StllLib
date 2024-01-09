@@ -1,4 +1,4 @@
-﻿namespace Stll.Library.Implementation.Types;
+﻿namespace Stll.Bridge.Implementation.Types;
 
 public class AuthTokenRequest
 {

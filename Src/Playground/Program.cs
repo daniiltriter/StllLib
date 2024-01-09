@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Stll.Library.Abstractions;
-using Stll.Library.Implementation.Types;
-using Stll.Library.IoC;
-using Stll.Library.Settings;
+using Stll.Bridge.Abstractions;
+using Stll.Bridge.Implementation.Types;
+using Stll.Bridge.IoC;
+using Stll.Bridge.Settings;
 
 var services = new ServiceCollection();
 
@@ -25,4 +25,4 @@ var tokenRequest = new AuthTokenRequest
 var bridgeResult = await stllApi.AuthBridge.GetTokenAsync(tokenRequest);
 
 
-Console.WriteLine(bridgeResult.Value.AccessToken);
+Console.WriteLine(bridgeResult.Content);

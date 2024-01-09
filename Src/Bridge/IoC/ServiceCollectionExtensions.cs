@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Stll.Library.Abstractions;
-using Stll.Library.Implementation.Interfaces;
-using Stll.Library.Implementation.Services;
-using Stll.Library.Services;
-using Stll.Library.Settings;
+using Stll.Bridge.Abstractions;
+using Stll.Bridge.Implementation.Interfaces;
+using Stll.Bridge.Implementation.Services;
+using Stll.Bridge.Services;
+using Stll.Bridge.Settings;
 
-namespace Stll.Library.IoC;
+namespace Stll.Bridge.IoC;
 
 public static class ServiceCollectionExtensions
 {

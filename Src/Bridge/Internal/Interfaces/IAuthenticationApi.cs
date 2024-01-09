@@ -1,7 +1,7 @@
 ﻿using Refit;
-using Stll.Library.Api.Objects;
+using Stll.Bridge.Api.Objects;
 
-namespace Stll.Library.Api.Interfaces;
+namespace Stll.Bridge.Api.Interfaces;
 
 internal interface IAuthenticationApi
 {
