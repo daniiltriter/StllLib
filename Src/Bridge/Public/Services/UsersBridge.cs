@@ -19,7 +19,7 @@ public class UsersBridge : IUsersBridge
         _api = RestService.For<IUsersApi>(settings.Value.ApiUrl);
     }
     
-    public async Task<ApiBridgeResponse> RegisterAsync(RegisterUserRequest request)
+    public async Task<JsonBridgeResponse> RegisterAsync(RegisterUserRequest request)
     {
         var apiRequest = new RegisterUserApiRequest
         {

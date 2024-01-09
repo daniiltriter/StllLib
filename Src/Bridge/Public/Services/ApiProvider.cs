@@ -4,14 +4,16 @@ using Stll.Library.Public.Interfaces;
 
 namespace Stll.Bridge.Services;
 
-internal class StllApiProvider : IStllApiProvider
+internal class ApiProvider : IApiProvider
 {
-    public StllApiProvider(IAuthenticationBridge authentication, IUsersBridge users)
+    public ApiProvider(IAuthenticationBridge authentication, IUsersBridge users, IFilesBridge files)
     {
         AuthBridge = authentication;
         UsersBridge = users;
+        FilesBridge = files;
     }
 
     public IAuthenticationBridge AuthBridge { get; }
     public IUsersBridge UsersBridge { get; }
+    public IFilesBridge FilesBridge { get; }
 };

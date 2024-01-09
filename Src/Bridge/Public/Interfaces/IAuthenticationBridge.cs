@@ -5,5 +5,5 @@ namespace Stll.Bridge.Public.Interfaces;
 
 public interface IAuthenticationBridge
 {
-    Task<ApiBridgeResponse> GetTokenAsync(AuthTokenRequest request);
+    Task<JsonBridgeResponse> GetTokenAsync(AuthTokenRequest request);
 }

@@ -3,8 +3,9 @@ using Stll.Library.Public.Interfaces;
 
 namespace Stll.Bridge.Abstractions;
 
-public interface IStllApiProvider
+public interface IApiProvider
 {
     IAuthenticationBridge AuthBridge { get; }
     IUsersBridge UsersBridge { get; }
+    IFilesBridge FilesBridge { get; }
 }

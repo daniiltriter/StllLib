@@ -19,7 +19,7 @@ internal class AuthenticationBridge : IAuthenticationBridge
         _api = RestService.For<IAuthenticationApi>(settings.Value.ApiUrl);
     }
     
-    public async Task<ApiBridgeResponse> GetTokenAsync(AuthTokenRequest request)
+    public async Task<JsonBridgeResponse> GetTokenAsync(AuthTokenRequest request)
     {
         var apiRequest = new JwtTokenApiRequest
         {

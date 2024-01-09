@@ -18,8 +18,9 @@ public static class ServiceCollectionExtensions
         
         services.AddSingleton<IAuthenticationBridge, AuthenticationBridge>();
         services.AddSingleton<IUsersBridge, UsersBridge>();
+        services.AddSingleton<IFilesBridge, FilesBridge>();
 
-        services.AddSingleton<IStllApiProvider, StllApiProvider>();
+        services.AddSingleton<IApiProvider, ApiProvider>();
         
         return services;
     }
