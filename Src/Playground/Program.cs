@@ -3,44 +3,62 @@ using Stll.Bridge.Abstractions;
 using Stll.Bridge.Public.Types;
 using Stll.Bridge.IoC;
 using Stll.Bridge.Settings;
+using Stll.Sessions.IoC;
+using Stll.Sessions.Primitives;
+using Stll.Sessions.Services;
+using Stll.Sessions.Types;
 
 var services = new ServiceCollection();
 
 services.AddOptions<ApiSettings>();
-services.WithStllApiBridge(settings =>
+services.WithStllBridge(settings =>
 {
     settings.ApiUrl = "http://127.0.0.1:5000";
 });
+services.WithStllSessions(settings =>
+{
+    settings.SessionPath = "sessions/user.json";
+});
+
+var currentDirectory = new DirectoryInfo(Environment.CurrentDirectory);
+currentDirectory.Attributes &= ~FileAttributes.ReadOnly;
 
 var provider = services.BuildServiceProvider();
 
-var stllApi = provider.GetService<IApiProvider>();
+var authFacade = provider.GetService<AuthorizationFacade>();
+var authContext = new AuthContext("username", "#Password123!", AuthAction.LogIn);
+var sessionCreated = await authFacade.TryAuthWithSessionAsync(authContext);
+Console.WriteLine($"Session created: {sessionCreated}");
 
-var registerUserRequest = new RegisterUserRequest("username", "#Password123!");
-var registerResponse = await stllApi.UsersBridge.RegisterAsync(registerUserRequest);
-if (!registerResponse.Success)
-{
-    Console.WriteLine($"CODE: {registerResponse.Code}; ERROR: {registerResponse.Error}");
-}
+#region OLD CODE
+// OLD CODE
+// var stllApi = provider.GetService<IApiProvider>();
+// var registerUserRequest = new RegisterUserRequest("username", "#Password123!");
+// var registerResponse = await stllApi.UsersBridge.RegisterAsync(registerUserRequest);
+// if (!registerResponse.Success)
+// {
+//     Console.WriteLine($"CODE: {registerResponse.Code}; ERROR: {registerResponse.Error}");
+// }
+//
+// var accessTokenRequest = new AuthTokenRequest("username", "#Password123!");
+// var tokenResponse = await stllApi.AuthBridge.GetTokenAsync(accessTokenRequest);
+// if (!tokenResponse.Success)
+// {
+//     Console.WriteLine($"CODE: {tokenResponse.Code}; ERROR: {tokenResponse.Error}");
+// }
+//
+// if (!Directory.Exists("downloads"))
+// {
+//     Directory.CreateDirectory("downloads");
+// }
+//
+// var fileResponse = await stllApi.FilesBridge.DownloadJavaAsync();
+//
+// const string fileName = "downloads/jdk17.zip";
+//
+// var file = await fileResponse.Content.ReadAsByteArrayAsync();
+// await using var fileStream = new FileStream(fileName, FileMode.Create);
+// await fileStream.WriteAsync(file);
 
-var accessTokenRequest = new AuthTokenRequest("username", "#Password123!");
-var tokenResponse = await stllApi.AuthBridge.GetTokenAsync(accessTokenRequest);
-if (!tokenResponse.Success)
-{
-    Console.WriteLine($"CODE: {tokenResponse.Code}; ERROR: {tokenResponse.Error}");
-}
 
-if (!Directory.Exists("downloads"))
-{
-    Directory.CreateDirectory("downloads");
-}
-
-var fileResponse = await stllApi.FilesBridge.DownloadJavaAsync();
-
-const string fileName = "downloads/jdk17.zip";
-
-var file = await fileResponse.Content.ReadAsByteArrayAsync();
-await using var fileStream = new FileStream(fileName, FileMode.Create);
-await fileStream.WriteAsync(file);
-
-Console.WriteLine(tokenResponse.Content);
+#endregion

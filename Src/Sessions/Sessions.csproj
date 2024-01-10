@@ -11,8 +11,4 @@
       <ProjectReference Include="..\Bridge\Bridge.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="IoC" />
-    </ItemGroup>
-
 </Project>
