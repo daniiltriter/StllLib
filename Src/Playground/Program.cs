@@ -2,7 +2,7 @@
 using Stll.Bridge.Abstractions;
 using Stll.Bridge.Public.Types;
 using Stll.Bridge.IoC;
-using Stll.Bridge.Settings;using StreamWriter = System.IO.StreamWriter;
+using Stll.Bridge.Settings;
 
 var services = new ServiceCollection();
 
