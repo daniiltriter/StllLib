@@ -14,6 +14,8 @@ public class AuthService : IAuthService
 
     public async Task<AuthResult> AuthorizeAsync(AuthContext context)
     {
-        return new AuthResult();
+        var authStrategy = _resolver.Resolve(context.Action);
+        var strategyResult = await authStrategy.AuthAsync(context.Username, context.Password);
+        return new AuthResult(strategyResult.AccessToken);
     }
 }

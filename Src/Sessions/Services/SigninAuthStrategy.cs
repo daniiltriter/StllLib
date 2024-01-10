@@ -1,12 +1,39 @@
-﻿using Stll.Sessions.Abstractions;
+﻿using System.Text.Json;
+using Stll.Bridge.Abstractions;
+using Stll.Bridge.Public.Types;
+using Stll.Sessions.Abstractions;
 using Stll.Sessions.Types;
 
 namespace Stll.Sessions.Services;
 
 public class SigninAuthStrategy : IAuthStrategy
 {
-    public async Task<AuthResult> AuthAsync()
+    private readonly IApiProvider _api;
+    public SigninAuthStrategy(IApiProvider api)
     {
-         return new AuthResult();
+        _api = api;
     }
+    public async Task<AuthStrategyResult> AuthAsync(string name, string password)
+    {
+        var registerRequest = new RegisterUserRequest(name, password);
+        
+        var apiResult = await _api.UsersBridge.RegisterAsync(registerRequest);
+        if (!apiResult.Success)
+        {
+            // TODO: use any logger. 
+            return new AuthStrategyResult(string.Empty);
+        }
+        
+        var authRequest = new AuthTokenRequest(name, password);
+        var authResponse = await _api.AuthBridge.GetTokenAsync(authRequest);
+        if (!authResponse.Success)
+        {
+            return new AuthStrategyResult(string.Empty);
+        }
+
+        // TODO: make IApiResponseParser service into the Bridge project
+        return JsonSerializer.Deserialize<AuthStrategyResult>(authResponse.Content);
+    }
+    
+    
 }

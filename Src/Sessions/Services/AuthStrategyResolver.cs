@@ -1,4 +1,5 @@
-﻿using Stll.Sessions.Abstractions;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Stll.Sessions.Abstractions;
 using Stll.Sessions.Primitives;
 
 namespace Stll.Sessions.Services;
@@ -12,8 +13,9 @@ public class AuthStrategyResolver : IAuthStrategyResolver
         _services = services;
     }
     
-    public IAuthStrategy Resolve(AuthAction action)
+    public IAuthStrategy Resolve(AuthAction action) => action switch
     {
-        throw new NotImplementedException();
-    }
+        AuthAction.LogIn => _services.GetService<LoginAuthStrategy>(),
+        AuthAction.SignIn => _services.GetService<SigninAuthStrategy>()
+    };
 }

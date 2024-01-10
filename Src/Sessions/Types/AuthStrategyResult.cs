@@ -1,6 +1,14 @@
-﻿namespace Stll.Sessions.Types;
+﻿using System.Text.Json.Serialization;
 
-public class AuthStrategyResponse
+namespace Stll.Sessions.Types;
+
+public class AuthStrategyResult
 {
-    public string AccessToken { get; set; }
+    [JsonPropertyName("accessToken")]
+    public string AccessToken { get; }
+
+    public AuthStrategyResult(string accessToken)
+    {
+        AccessToken = accessToken;
+    }
 }
