@@ -4,6 +4,7 @@ namespace Stll.Sessions.Abstractions;
 
 public interface ISessionService
 {
-    void BuildSession(SessionContext context);
-    Session CurrentSession();
+    Task CreateAsync(SessionContext context);
+    Task<Session> GetOrDefaultAsync();
+    bool Remove();
 }

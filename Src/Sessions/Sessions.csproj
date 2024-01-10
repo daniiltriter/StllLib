@@ -4,11 +4,15 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>Startup</RootNamespace>
+        <RootNamespace>Stll.Sessions</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Bridge\Bridge.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="IoC" />
     </ItemGroup>
 
 </Project>

@@ -7,7 +7,7 @@ using Stll.Bridge.Settings;
 var services = new ServiceCollection();
 
 services.AddOptions<ApiSettings>();
-services.WithStllApi(settings =>
+services.WithStllApiBridge(settings =>
 {
     settings.ApiUrl = "http://127.0.0.1:5000";
 });
