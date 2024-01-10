@@ -11,7 +11,7 @@ namespace Stll.Bridge.IoC;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection WithStllApi(this IServiceCollection services, Action<ApiSettings> settingsModifier)
+    public static IServiceCollection WithStllBridge(this IServiceCollection services, Action<ApiSettings> settingsModifier)
     {
         services.AddOptions<ApiSettings>();
         services.Configure(settingsModifier);
