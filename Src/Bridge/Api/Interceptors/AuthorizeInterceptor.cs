@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using Microsoft.Extensions.DependencyInjection;
 using Stll.Bridge.Public.Interfaces;
+using Stll.Sessions.Abstractions;
 
 namespace Stll.Bridge.Api.Interceptors;
 

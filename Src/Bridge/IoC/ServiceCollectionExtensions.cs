@@ -2,11 +2,12 @@
 using Refit;
 using Stll.Bridge.Abstractions;
 using Stll.Bridge.Api.Abstractions;
+using Stll.Bridge.Api.Interceptors;
 using Stll.Bridge.Public.Services;
 using Stll.Bridge.Public.Interfaces;
 using Stll.Bridge.Services;
 using Stll.Bridge.Settings;
-using Stll.Bridge.Api.Interceptors;
+using Stll.Sessions.IoC;
 
 namespace Stll.Bridge.IoC;
 
@@ -15,23 +16,29 @@ public static class ServiceCollectionExtensions
     public static StllServiceBuilder WithStllApiBridge(this IServiceCollection services, 
         Action<ApiSettings> settingsModifier)
     {
-        var settings = new ApiSettings();
-        settingsModifier(settings);
+        var apiSettings = new ApiSettings();
+        settingsModifier(apiSettings);
         services.AddOptions<ApiSettings>();
         services.Configure(settingsModifier);
         services.AddSingleton<IAuthenticationBridge, AuthenticationBridge>();
         services.AddSingleton<IUsersBridge, UsersBridge>();
         services.AddSingleton<IFilesBridge, FilesBridge>();
-        // services.AddTransient<AuthorizeInterceptor>();
+        services.AddTransient<AuthorizeInterceptor>();
 
-        var baseUri = new Uri(settings.ApiUrl);
+        services.AddSessions(settings =>
+            {
+                settings.SessionPath = apiSettings.SessionsPath;
+            })
+            .AsLoginStrategy<StllLoginAuthStrategy>()
+            .AsSigninStrategy<StllSigninAuthStrategy>();
+
+        var baseUri = new Uri(apiSettings.ApiUrl);
         services.AddApi<IAuthenticationApi>(baseUri);
         services.AddApi<IUsersApi>(baseUri).AddAuthInterceptor();
         services.AddApi<IFilesApi>(baseUri).AddAuthInterceptor();
 
         services.AddSingleton<IApiProvider, ApiProvider>();
-        services.AddSingleton<IAuthTokenStore, AuthTokenStore>();
-        
+
         return StllServiceBuilder.Initialize(services);
     }
 
