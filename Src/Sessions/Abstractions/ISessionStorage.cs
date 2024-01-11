@@ -4,7 +4,7 @@ namespace Stll.Sessions.Shared;
 
 public interface ISessionStorage
 {
-    Task WriteAsync(SessionContext context);
+    Task WriteAsync(Session session);
 
     Task<Session> CurrentAsync();
 

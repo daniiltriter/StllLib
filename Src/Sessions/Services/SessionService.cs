@@ -1,4 +1,4 @@
-﻿using Stll.Library.Public.Interfaces;
+﻿using Stll.Bridge.Public.Interfaces;
 using Stll.Sessions.Abstractions;
 using Stll.Sessions.Shared;
 using Stll.Sessions.Types;
@@ -17,8 +17,17 @@ public class SessionService : ISessionService
     
     public async Task CreateAsync(SessionContext context)
     {
+        // TODO: replace to AuthFacade
         _tokenStore.WriteToken(context.AccessToken);
-        await _storage.WriteAsync(context);
+        
+        var session = new Session(context.Username, context.AccessToken, context.ClientToken);
+        await _storage.WriteAsync(session);
+    }
+
+    public async Task RefreshAsync()
+    {
+        var session = await _storage.CurrentAsync();
+        _tokenStore.WriteToken(session.AccessToken);
     }
 
     public async Task<Session> CurrentAsync()

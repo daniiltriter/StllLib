@@ -12,9 +12,9 @@ internal class AuthenticationBridge : IAuthenticationBridge
 {
     private readonly IAuthenticationApi _api;
 
-    public AuthenticationBridge(IServiceProvider _services)
+    public AuthenticationBridge(IServiceProvider services)
     {
-        _api = _services.GetService<IAuthenticationApi>();
+        _api = services.GetService<IAuthenticationApi>();
     }
     
     public async Task<JsonBridgeResponse> GetTokenAsync(AuthTokenRequest request)

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Stll.Bridge.Abstractions;
 using Stll.Bridge.IoC;
-using Stll.Bridge.Public.Types;
 using Stll.Bridge.Settings;
 using Stll.Sessions.Abstractions;
 using Stll.Sessions.IoC;
@@ -22,16 +21,24 @@ stllBuilder.WithStllSessions(settings =>
 });
 var provider = services.BuildServiceProvider();
 
-var authFacade = provider.GetService<AuthorizationFacade>();
+var authFacade = provider.GetService<UserSessionsAuthFacade>();
 var authContext = new AuthContext("username", "#Password123!", AuthAction.LogIn);
-var sessionCreated = await authFacade.TryAuthWithSessionAsync(authContext);
-Console.WriteLine($"Session created: {sessionCreated}");
+//var sessionCreated = await authFacade.SessionAuthAsync(authContext);
 
 var sessions = provider.GetService<ISessionService>();
-var currentSession = sessions.CurrentAsync();
+sessions.RefreshAsync();
+
+var currentSession = await sessions.CurrentAsync();
+
+var stllApi = provider.GetService<IApiProvider>();
+var user = await stllApi.UsersBridge.GetAsync();
+
+Console.WriteLine($"Session created: {user.Success}");
+
 
 #region OLD CODE
 
+#if false
 var stllApi = provider.GetService<IApiProvider>();
 var registerUserRequest = new RegisterUserRequest("username", "#Password123!");
 var registerResponse = await stllApi.UsersBridge.RegisterAsync(registerUserRequest);
@@ -59,6 +66,6 @@ const string fileName = "downloads/jdk17.zip";
 var file = await fileResponse.Content.ReadAsByteArrayAsync();
 await using var fileStream = new FileStream(fileName, FileMode.Create);
 await fileStream.WriteAsync(file);
-
+#endif
 
 #endregion

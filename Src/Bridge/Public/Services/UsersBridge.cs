@@ -2,11 +2,11 @@
 using Stll.Bridge.Api.Abstractions;
 using Stll.Bridge.Api.Objects;
 using Stll.Bridge.Internal.Extensions;
+using Stll.Bridge.Public.Interfaces;
 using Stll.Bridge.Public.Results;
 using Stll.Bridge.Public.Types;
-using Stll.Library.Public.Interfaces;
 
-namespace Stll.Library.Public.Services;
+namespace Stll.Bridge.Public.Services;
 
 public class UsersBridge : IUsersBridge
 {
@@ -25,6 +25,12 @@ public class UsersBridge : IUsersBridge
             Password = request.Password
         };
         var apiResponse = await _api.RegisterAsync(apiRequest);
+        return apiResponse.ToBridgeResponse();
+    }
+
+    public async Task<JsonBridgeResponse> GetAsync()
+    {
+        var apiResponse = await _api.GetAsync();
         return apiResponse.ToBridgeResponse();
     }
 }

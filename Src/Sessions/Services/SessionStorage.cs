@@ -17,10 +17,8 @@ public class SessionStorage : ISessionStorage
     {
         _settings = settings;
     }
-    public async Task WriteAsync(SessionContext context)
+    public async Task WriteAsync(Session session)
     {
-        var session = new Session(context.Username, context.AccessToken, context.ClientToken);
-        
         var path = _settings.Value.SessionPath;
         if (!Directory.Exists(path))
         {
@@ -47,9 +45,8 @@ public class SessionStorage : ISessionStorage
         }
 
         var content = await File.ReadAllTextAsync(path);
-        var session = JsonSerializer.Deserialize<Session>(content);
-        _cache = session;
-        return JsonSerializer.Deserialize<Session>(content);
+        _cache = JsonSerializer.Deserialize<Session>(content);;
+        return _cache;
     }
 
     public bool Remove()

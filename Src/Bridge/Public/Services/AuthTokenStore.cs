@@ -1,6 +1,6 @@
-﻿using Stll.Library.Public.Interfaces;
+﻿using Stll.Bridge.Public.Interfaces;
 
-namespace Stll.Library.Public.Services;
+namespace Stll.Bridge.Public.Services;
 
 internal class AuthTokenStore : IAuthTokenStore
 {

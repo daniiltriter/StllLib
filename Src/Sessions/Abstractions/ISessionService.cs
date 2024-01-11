@@ -6,5 +6,6 @@ public interface ISessionService
 {
     Task CreateAsync(SessionContext context);
     Task<Session> CurrentAsync();
+    Task RefreshAsync();
     bool Remove();
 }

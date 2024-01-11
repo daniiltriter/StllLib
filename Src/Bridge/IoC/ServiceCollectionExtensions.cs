@@ -6,9 +6,7 @@ using Stll.Bridge.Public.Services;
 using Stll.Bridge.Public.Interfaces;
 using Stll.Bridge.Services;
 using Stll.Bridge.Settings;
-using Stll.Library.Api.Interceptors;
-using Stll.Library.Public.Interfaces;
-using Stll.Library.Public.Services;
+using Stll.Bridge.Api.Interceptors;
 
 namespace Stll.Bridge.IoC;
 
@@ -24,11 +22,12 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IAuthenticationBridge, AuthenticationBridge>();
         services.AddSingleton<IUsersBridge, UsersBridge>();
         services.AddSingleton<IFilesBridge, FilesBridge>();
+        // services.AddTransient<AuthorizeInterceptor>();
 
         var baseUri = new Uri(settings.ApiUrl);
         services.AddApi<IAuthenticationApi>(baseUri);
-        services.AddApi<IUsersApi>(baseUri).AddInterceptor<AuthorizeInterceptor>();
-        services.AddApi<IFilesApi>(baseUri).AddInterceptor<AuthorizeInterceptor>();
+        services.AddApi<IUsersApi>(baseUri).AddAuthInterceptor();
+        services.AddApi<IFilesApi>(baseUri).AddAuthInterceptor();
 
         services.AddSingleton<IApiProvider, ApiProvider>();
         services.AddSingleton<IAuthTokenStore, AuthTokenStore>();
@@ -43,10 +42,8 @@ public static class ServiceCollectionExtensions
             .ConfigureHttpClient(c => c.BaseAddress = uri);
     }
     
-    private static IHttpClientBuilder AddInterceptor<TInterceptor>(this IHttpClientBuilder services) 
-        where TInterceptor : DelegatingHandler
+    private static IHttpClientBuilder AddAuthInterceptor(this IHttpClientBuilder services)
     {
-        return services.AddHttpMessageHandler<AuthorizeInterceptor>();
+        return services.AddHttpMessageHandler(services => new AuthorizeInterceptor(services));
     }
-    
 }

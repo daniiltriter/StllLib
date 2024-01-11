@@ -19,7 +19,7 @@ public static class StllServiceBuilderExtensions
             .AddSingleton<LoginAuthStrategy>()
             .AddSingleton<SigninAuthStrategy>();
         
-        builder.Services.AddSingleton<AuthorizationFacade>();
+        builder.Services.AddSingleton<UserSessionsAuthFacade>();
         
         builder.Services.AddSingleton<ISessionStorage, SessionStorage>();
         builder.Services.AddSingleton<ISessionService, SessionService>();

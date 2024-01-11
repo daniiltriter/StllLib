@@ -1,21 +1,21 @@
-﻿using Stll.Library.Public.Interfaces;
+﻿using Stll.Bridge.Public.Interfaces;
 using Stll.Sessions.Abstractions;
 using Stll.Sessions.Types;
 
 namespace Stll.Sessions.Services;
 
-public class AuthorizationFacade
+public class UserSessionsAuthFacade
 {
     private readonly IAuthService _auth;
     private readonly ISessionService _session;
 
-    public AuthorizationFacade(IAuthService auth, ISessionService session)
+    public UserSessionsAuthFacade(IAuthService auth, ISessionService session)
     {
         _auth = auth;
         _session = session;
     }
 
-    public async Task<bool> TryAuthWithSessionAsync(AuthContext context)
+    public async Task<bool> SessionAuthAsync(AuthContext context)
     {
         var authResult = await _auth.AuthorizeAsync(context);
         

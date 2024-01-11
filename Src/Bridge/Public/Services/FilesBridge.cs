@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Stll.Bridge.Api.Abstractions;
 using Stll.Bridge.Internal.Extensions;
+using Stll.Bridge.Public.Interfaces;
 using Stll.Bridge.Public.Results;
-using Stll.Library.Public.Interfaces;
 
-namespace Stll.Library.Public.Services;
+namespace Stll.Bridge.Public.Services;
 
 public class FilesBridge : IFilesBridge
 {

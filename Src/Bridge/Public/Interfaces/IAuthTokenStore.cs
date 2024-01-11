@@ -1,4 +1,4 @@
-﻿namespace Stll.Library.Public.Interfaces;
+﻿namespace Stll.Bridge.Public.Interfaces;
 
 public interface IAuthTokenStore
 {

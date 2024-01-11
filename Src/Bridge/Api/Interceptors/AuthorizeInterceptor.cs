@@ -1,15 +1,19 @@
 ﻿using System.Net.Http.Headers;
-using Stll.Library.Public.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+using Stll.Bridge.Public.Interfaces;
 
-namespace Stll.Library.Api.Interceptors;
+namespace Stll.Bridge.Api.Interceptors;
 
 internal class AuthorizeInterceptor : DelegatingHandler
 {
     private readonly IAuthTokenStore _authToken;
 
-    public AuthorizeInterceptor(IAuthTokenStore authToken)
+    public AuthorizeInterceptor(IServiceProvider services, bool useDI = true)
     {
-        _authToken = authToken;
+        _authToken = services.GetService<IAuthTokenStore>();
+        //DI InnerHandler null bugfix
+        if (useDI) return;
+        InnerHandler = new HttpClientHandler();
     }
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
