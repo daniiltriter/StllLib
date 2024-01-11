@@ -1,12 +1,10 @@
-﻿using Microsoft.Extensions.Options;
-using Refit;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Stll.Bridge.Api.Abstractions;
 using Stll.Bridge.Api.Objects;
 using Stll.Bridge.Internal.Extensions;
 using Stll.Bridge.Public.Interfaces;
 using Stll.Bridge.Public.Results;
 using Stll.Bridge.Public.Types;
-using Stll.Bridge.Settings;
 
 namespace Stll.Bridge.Public.Services;
 
@@ -14,9 +12,9 @@ internal class AuthenticationBridge : IAuthenticationBridge
 {
     private readonly IAuthenticationApi _api;
 
-    public AuthenticationBridge(IOptions<ApiSettings> settings)
+    public AuthenticationBridge(IServiceProvider _services)
     {
-        _api = RestService.For<IAuthenticationApi>(settings.Value.ApiUrl);
+        _api = _services.GetService<IAuthenticationApi>();
     }
     
     public async Task<JsonBridgeResponse> GetTokenAsync(AuthTokenRequest request)

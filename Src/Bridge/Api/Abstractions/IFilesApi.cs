@@ -2,7 +2,7 @@
 
 namespace Stll.Bridge.Api.Abstractions;
 
-public interface IFilesApi
+internal interface IFilesApi
 {
     [Get("/api/files/java")]
     Task<ApiResponse<HttpContent>> DownloadJavaAsync();

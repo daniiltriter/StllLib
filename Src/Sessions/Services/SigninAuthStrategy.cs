@@ -17,8 +17,8 @@ public class SigninAuthStrategy : IAuthStrategy
     {
         var registerRequest = new RegisterUserRequest(name, password);
         
-        var apiResult = await _api.UsersBridge.RegisterAsync(registerRequest);
-        if (!apiResult.Success)
+        var registerResult = await _api.UsersBridge.RegisterAsync(registerRequest);
+        if (!registerResult.Success)
         {
             // TODO: use any logger. 
             return new AuthStrategyResult(string.Empty);
