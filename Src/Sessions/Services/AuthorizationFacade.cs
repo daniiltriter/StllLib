@@ -1,4 +1,5 @@
-﻿using Stll.Sessions.Abstractions;
+﻿using Stll.Library.Public.Interfaces;
+using Stll.Sessions.Abstractions;
 using Stll.Sessions.Types;
 
 namespace Stll.Sessions.Services;
@@ -17,7 +18,7 @@ public class AuthorizationFacade
     public async Task<bool> TryAuthWithSessionAsync(AuthContext context)
     {
         var authResult = await _auth.AuthorizeAsync(context);
-
+        
         var authFailed = string.IsNullOrWhiteSpace(authResult.AccessToken);
         if (authFailed)
         {

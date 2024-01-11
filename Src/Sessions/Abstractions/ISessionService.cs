@@ -5,6 +5,6 @@ namespace Stll.Sessions.Abstractions;
 public interface ISessionService
 {
     Task CreateAsync(SessionContext context);
-    Task<Session> GetOrDefaultAsync();
+    Task<Session> CurrentAsync();
     bool Remove();
 }
