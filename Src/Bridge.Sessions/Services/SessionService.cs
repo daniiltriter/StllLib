@@ -1,11 +1,11 @@
 ﻿using Stll.Bridge.Public.Interfaces;
-using Stll.Sessions.Abstractions;
-using Stll.Sessions.Shared;
-using Stll.Sessions.Types;
+using Stll.Bridge.Sessions.Abstractions;
+using Stll.Bridge.Sessions.Shared;
+using Stll.Bridge.Sessions.Types;
 
-namespace Stll.Sessions.Services;
+namespace Stll.Bridge.Sessions.Services;
 
-public class SessionService : ISessionService
+internal class SessionService : ISessionService
 {
     private readonly ISessionStorage _storage;
     private readonly IAuthTokenStore _tokenStore;

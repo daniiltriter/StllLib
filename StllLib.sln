@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridge", "Src\Bridge\Bridge
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground", "Src\Playground\Playground.csproj", "{DE5DBABA-ACFB-4611-9F62-3211A3E971AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sessions", "Src\Sessions\Sessions.csproj", "{C09559E8-284E-4C97-AF08-E41C852E52B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridge.Sessions", "Src\Bridge.Sessions\Bridge.Sessions.csproj", "{C09559E8-284E-4C97-AF08-E41C852E52B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

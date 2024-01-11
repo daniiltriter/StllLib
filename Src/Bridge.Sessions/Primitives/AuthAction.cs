@@ -1,4 +1,4 @@
-﻿namespace Stll.Sessions.Primitives;
+﻿namespace Stll.Bridge.Sessions.Primitives;
 
 public enum AuthAction
 {

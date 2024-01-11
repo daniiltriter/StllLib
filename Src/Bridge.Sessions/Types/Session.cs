@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Stll.Sessions.Types;
+namespace Stll.Bridge.Sessions.Types;
 
 public class Session
 {

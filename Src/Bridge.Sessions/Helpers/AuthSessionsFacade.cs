@@ -1,15 +1,15 @@
 ﻿using Stll.Bridge.Public.Interfaces;
-using Stll.Sessions.Abstractions;
-using Stll.Sessions.Types;
+using Stll.Bridge.Sessions.Abstractions;
+using Stll.Bridge.Sessions.Types;
 
-namespace Stll.Sessions.Services;
+namespace Stll.Bridge.Sessions.Shared;
 
-public class UserSessionsAuthFacade
+public class AuthSessionsFacade
 {
     private readonly IAuthService _auth;
     private readonly ISessionService _session;
 
-    public UserSessionsAuthFacade(IAuthService auth, ISessionService session)
+    public AuthSessionsFacade(IAuthService auth, ISessionService session)
     {
         _auth = auth;
         _session = session;

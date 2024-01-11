@@ -1,4 +1,4 @@
-﻿namespace Stll.Sessions.Types;
+﻿namespace Stll.Bridge.Sessions.Types;
 
 public class SessionContext
 {

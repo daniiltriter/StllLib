@@ -1,8 +1,8 @@
-﻿using Stll.Sessions.Types;
+﻿using Stll.Bridge.Sessions.Types;
 
-namespace Stll.Sessions.Abstractions;
+namespace Stll.Bridge.Sessions.Abstractions;
 
-public interface IAuthStrategy
+internal interface IAuthStrategy
 {
     // TODO: can be refactored with a chain of responsibility design pattern
     Task<AuthStrategyResult> AuthAsync(string name, string password);

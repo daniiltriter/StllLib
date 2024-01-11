@@ -10,7 +10,7 @@
 
     <ItemGroup>
 <!--      <ProjectReference Include="..\Bridge\Bridge.csproj" />-->
-      <ProjectReference Include="..\Sessions\Sessions.csproj" />
+      <ProjectReference Include="..\Bridge.Sessions\Bridge.Sessions.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
-﻿using Stll.Sessions.Primitives;
+﻿using Stll.Bridge.Sessions.Primitives;
 
-namespace Stll.Sessions.Types;
+namespace Stll.Bridge.Sessions.Types;
 
 public class AuthContext
 {

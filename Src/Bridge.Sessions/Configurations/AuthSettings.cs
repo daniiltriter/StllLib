@@ -1,4 +1,4 @@
-﻿namespace Stll.Sessions.Configurations;
+﻿namespace Stll.Bridge.Sessions.Configurations;
 
 public class AuthSettings
 {

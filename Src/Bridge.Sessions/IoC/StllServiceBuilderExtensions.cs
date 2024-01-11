@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Stll.Bridge.IoC;
-using Stll.Sessions.Abstractions;
-using Stll.Sessions.Configurations;
-using Stll.Sessions.Services;
-using Stll.Sessions.Shared;
+using Stll.Bridge.Sessions.Abstractions;
+using Stll.Bridge.Sessions.Configurations;
+using Stll.Bridge.Sessions.Services;
+using Stll.Bridge.Sessions.Shared;
 
-namespace Stll.Sessions.IoC;
+namespace Stll.Bridge.Sessions.IoC;
 
 public static class StllServiceBuilderExtensions
 {
@@ -19,7 +19,7 @@ public static class StllServiceBuilderExtensions
             .AddSingleton<LoginAuthStrategy>()
             .AddSingleton<SigninAuthStrategy>();
         
-        builder.Services.AddSingleton<UserSessionsAuthFacade>();
+        builder.Services.AddSingleton<AuthSessionsFacade>();
         
         builder.Services.AddSingleton<ISessionStorage, SessionStorage>();
         builder.Services.AddSingleton<ISessionService, SessionService>();

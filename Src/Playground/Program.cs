@@ -2,11 +2,11 @@
 using Stll.Bridge.Abstractions;
 using Stll.Bridge.IoC;
 using Stll.Bridge.Settings;
-using Stll.Sessions.Abstractions;
-using Stll.Sessions.IoC;
-using Stll.Sessions.Primitives;
-using Stll.Sessions.Services;
-using Stll.Sessions.Types;
+using Stll.Bridge.Sessions.Abstractions;
+using Stll.Bridge.Sessions.IoC;
+using Stll.Bridge.Sessions.Primitives;
+using Stll.Bridge.Sessions.Shared;
+using Stll.Bridge.Sessions.Types;
 
 var services = new ServiceCollection();
 
@@ -21,7 +21,7 @@ stllBuilder.WithStllSessions(settings =>
 });
 var provider = services.BuildServiceProvider();
 
-var authFacade = provider.GetService<UserSessionsAuthFacade>();
+var authFacade = provider.GetService<AuthSessionsFacade>();
 var authContext = new AuthContext("username", "#Password123!", AuthAction.LogIn);
 //var sessionCreated = await authFacade.SessionAuthAsync(authContext);
 

@@ -1,13 +1,13 @@
 ﻿using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.Options;
-using Stll.Sessions.Configurations;
-using Stll.Sessions.Types;
+using Stll.Bridge.Sessions.Configurations;
+using Stll.Bridge.Sessions.Types;
 
-namespace Stll.Sessions.Shared;
+namespace Stll.Bridge.Sessions.Shared;
 
 // TODO: require to refactoring. Single responsibility.
-public class SessionStorage : ISessionStorage
+internal class SessionStorage : ISessionStorage
 {
     private Session _cache;
     

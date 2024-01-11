@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Stll.Sessions.Abstractions;
-using Stll.Sessions.Primitives;
+using Stll.Bridge.Sessions.Abstractions;
+using Stll.Bridge.Sessions.Primitives;
 
-namespace Stll.Sessions.Services;
+namespace Stll.Bridge.Sessions.Services;
 
-public class AuthStrategyResolver : IAuthStrategyResolver
+internal class AuthStrategyResolver : IAuthStrategyResolver
 {
     private readonly IServiceProvider _services;
     

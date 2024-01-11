@@ -1,6 +1,6 @@
-using Stll.Sessions.Types;
+using Stll.Bridge.Sessions.Types;
 
-namespace Stll.Sessions.Shared;
+namespace Stll.Bridge.Sessions.Shared;
 
 public interface ISessionStorage
 {

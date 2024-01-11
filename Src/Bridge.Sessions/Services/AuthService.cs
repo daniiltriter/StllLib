@@ -1,9 +1,9 @@
-﻿using Stll.Sessions.Abstractions;
-using Stll.Sessions.Types;
+﻿using Stll.Bridge.Sessions.Abstractions;
+using Stll.Bridge.Sessions.Types;
 
-namespace Stll.Sessions.Services;
+namespace Stll.Bridge.Sessions.Services;
 
-public class AuthService : IAuthService
+internal class AuthService : IAuthService
 {
     private readonly IAuthStrategyResolver _resolver;
 
