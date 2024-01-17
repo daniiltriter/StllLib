@@ -15,7 +15,7 @@ public static class ServiceCollectionExtensions
 
         services.AddSingleton<IAuthService, AuthService>();
         services.AddSingleton<IAuthStrategyResolver, AuthStrategyResolver>();
-        services.AddSingleton<IAuthTokenStore, AuthTokenStore>();
+        services.AddSingleton<ITokenStore, TokenStore>();
         
         services.AddSingleton<ISessionStorage, SessionStorage>();
         services.AddSingleton<ISessionService, SessionService>();

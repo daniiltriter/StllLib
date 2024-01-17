@@ -11,6 +11,7 @@
     <ItemGroup>
 <!--      <ProjectReference Include="..\Bridge\Bridge.csproj" />-->
       <ProjectReference Include="..\Bridge\Bridge.csproj" />
+      <ProjectReference Include="..\Sessions\Sessions.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,8 +1,7 @@
-﻿namespace Stll.Sessions.Abstractions;
+﻿namespace Stll.Bridge.Api.Abstractions;
 
 public interface IAuthTokenStore
 {
     string GetToken();
     void WriteToken(string token);
-    void Clear();
 }

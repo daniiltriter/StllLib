@@ -2,7 +2,7 @@
 
 namespace Stll.Sessions.Services;
 
-internal class AuthTokenStore : IAuthTokenStore
+internal class TokenStore : ITokenStore
 {
     private string _token = string.Empty;
     public string GetToken()

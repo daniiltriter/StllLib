@@ -5,7 +5,6 @@ using Stll.Bridge.Api.Interceptors;
 using Stll.Bridge.Interfaces;
 using Stll.Bridge.Services;
 using Stll.Bridge.Settings;
-using Stll.Sessions.IoC;
 
 namespace Stll.Bridge.IoC;
 
@@ -19,6 +18,7 @@ public static class ServiceCollectionExtensions
         services.AddOptions<ApiSettings>();
         services.Configure(settingsModifier);
         services.AddSingleton<IAuthenticationBridge, AuthenticationBridge>();
+        services.AddSingleton<IAuthTokenStore, AuthTokenStore>();
         services.AddSingleton<IUsersBridge, UsersBridge>();
         services.AddSingleton<IFilesBridge, FilesBridge>();
         services.AddTransient<AuthorizeInterceptor>();

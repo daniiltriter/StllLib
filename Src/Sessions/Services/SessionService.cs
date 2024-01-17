@@ -7,8 +7,8 @@ namespace Stll.Sessions.Services;
 internal class SessionService : ISessionService
 {
     private readonly ISessionStorage _storage;
-    private readonly IAuthTokenStore _tokenStore;
-    public SessionService(ISessionStorage storage, IAuthTokenStore tokenStore)
+    private readonly ITokenStore _tokenStore;
+    public SessionService(ISessionStorage storage, ITokenStore tokenStore)
     {
         _storage = storage;
         _tokenStore = tokenStore;
@@ -18,7 +18,6 @@ internal class SessionService : ISessionService
     {
         // TODO: replace to AuthFacade
         _tokenStore.WriteToken(context.AccessToken);
-        
         var session = new Session(context.Username, context.AccessToken, context.ClientToken);
         await _storage.WriteAsync(session);
     }

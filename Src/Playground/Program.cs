@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Stll.Bridge.Api.Abstractions;
 using Stll.Bridge.Interfaces;
 using Stll.Bridge.IoC;
 using Stll.Bridge.Settings;
@@ -28,6 +29,9 @@ sessions.RefreshAsync();
 
 var currentSession = await sessions.CurrentAsync();
 Console.WriteLine($"Current token: {currentSession.AccessToken}");
+
+var tokenStore = provider.GetService<IAuthTokenStore>();
+tokenStore.WriteToken(currentSession.AccessToken);
 
 var stllApi = provider.GetService<IApiProvider>();
 var user = await stllApi.UsersBridge.GetAsync();
