@@ -13,4 +13,8 @@
       <ProjectReference Include="..\Bridge\Bridge.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="ACMESharp" Version="0.9.1.326" />
+    </ItemGroup>
+
 </Project>

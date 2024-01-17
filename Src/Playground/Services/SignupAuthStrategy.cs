@@ -1,19 +1,19 @@
 ﻿using System.Text.Json;
-using Stll.Bridge.Abstractions;
-using Stll.Bridge.Public.Types;
+using Stll.Bridge.Interfaces;
+using Stll.Bridge.Types;
 using Stll.Sessions.Services;
 using Stll.Sessions.Types;
 
 namespace Stll.Bridge.Services;
 
-public class StllSigninAuthStrategy : SigninAuthStrategy
+public class SignupAuthStrategy : ISignupAuthStrategy
 {
     private readonly IApiProvider _api;
-    public StllSigninAuthStrategy(IApiProvider api)
+    public SignupAuthStrategy(IApiProvider api)
     {
         _api = api;
     }
-    public override async Task<AuthStrategyResult> AuthAsync(string name, string password)
+    public async Task<AuthStrategyResult> AuthAsync(string name, string password)
     {
         var registerRequest = new RegisterUserRequest(name, password);
         

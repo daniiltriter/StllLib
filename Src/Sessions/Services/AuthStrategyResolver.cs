@@ -15,7 +15,7 @@ internal class AuthStrategyResolver : IAuthStrategyResolver
     
     public IAuthStrategy Resolve(AuthAction action) => action switch
     {
-        AuthAction.LogIn => _services.GetService<LoginAuthStrategy>(),
-        AuthAction.SignIn => _services.GetService<SigninAuthStrategy>()
+        AuthAction.LogIn => _services.GetService<ILoginAuthStrategy>(),
+        AuthAction.SignIn => _services.GetService<ISignupAuthStrategy>()
     };
 }

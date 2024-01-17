@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 using Refit;
-using Stll.Bridge.Public.Results;
+using Stll.Bridge.Results;
 
 namespace Stll.Bridge.Internal.Extensions;
 

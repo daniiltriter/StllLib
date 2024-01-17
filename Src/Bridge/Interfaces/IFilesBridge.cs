@@ -1,6 +1,6 @@
-﻿using Stll.Bridge.Public.Results;
+﻿using Stll.Bridge.Results;
 
-namespace Stll.Bridge.Public.Interfaces;
+namespace Stll.Bridge.Interfaces;
 
 public interface IFilesBridge
 {

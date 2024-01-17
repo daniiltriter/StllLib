@@ -1,5 +1,4 @@
-﻿using Stll.Bridge.Abstractions;
-using Stll.Bridge.Public.Interfaces;
+﻿using Stll.Bridge.Interfaces;
 
 namespace Stll.Bridge.Services;
 

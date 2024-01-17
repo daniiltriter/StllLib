@@ -1,10 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Refit;
-using Stll.Bridge.Abstractions;
 using Stll.Bridge.Api.Abstractions;
 using Stll.Bridge.Api.Interceptors;
-using Stll.Bridge.Public.Services;
-using Stll.Bridge.Public.Interfaces;
+using Stll.Bridge.Interfaces;
 using Stll.Bridge.Services;
 using Stll.Bridge.Settings;
 using Stll.Sessions.IoC;
@@ -13,7 +11,7 @@ namespace Stll.Bridge.IoC;
 
 public static class ServiceCollectionExtensions
 {
-    public static StllServiceBuilder WithStllApiBridge(this IServiceCollection services, 
+    public static BridgeServiceBuilder WithApiBridge(this IServiceCollection services, 
         Action<ApiSettings> settingsModifier)
     {
         var apiSettings = new ApiSettings();
@@ -25,13 +23,6 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IFilesBridge, FilesBridge>();
         services.AddTransient<AuthorizeInterceptor>();
 
-        services.AddSessions(settings =>
-            {
-                settings.SessionPath = apiSettings.SessionsPath;
-            })
-            .AsLoginStrategy<StllLoginAuthStrategy>()
-            .AsSigninStrategy<StllSigninAuthStrategy>();
-
         var baseUri = new Uri(apiSettings.ApiUrl);
         services.AddApi<IAuthenticationApi>(baseUri);
         services.AddApi<IUsersApi>(baseUri).AddAuthInterceptor();
@@ -39,14 +30,13 @@ public static class ServiceCollectionExtensions
 
         services.AddSingleton<IApiProvider, ApiProvider>();
 
-        return StllServiceBuilder.Initialize(services);
+        return BridgeServiceBuilder.Initialize(services);
     }
 
     private static IHttpClientBuilder AddApi<TApi>(this IServiceCollection services, Uri uri) 
         where TApi : class
     {
-       return services.AddRefitClient<TApi>()
-            .ConfigureHttpClient(c => c.BaseAddress = uri);
+       return services.AddRefitClient<TApi>().ConfigureHttpClient(c => c.BaseAddress = uri);
     }
     
     private static IHttpClientBuilder AddAuthInterceptor(this IHttpClientBuilder services)

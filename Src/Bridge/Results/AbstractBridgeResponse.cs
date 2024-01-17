@@ -1,4 +1,4 @@
-﻿namespace Stll.Bridge.Public.Results;
+﻿namespace Stll.Bridge.Results;
 
 public abstract class AbstractBridgeResponse
 {

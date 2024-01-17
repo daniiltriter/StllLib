@@ -1,6 +1,4 @@
-﻿using Stll.Bridge.Public.Interfaces;
-
-namespace Stll.Bridge.Abstractions;
+﻿namespace Stll.Bridge.Interfaces;
 
 public interface IApiProvider
 {

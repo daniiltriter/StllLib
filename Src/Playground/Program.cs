@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Stll.Bridge.Abstractions;
+using Stll.Bridge.Interfaces;
 using Stll.Bridge.IoC;
 using Stll.Bridge.Settings;
 using Stll.Sessions.Abstractions;
@@ -10,7 +10,7 @@ using Stll.Sessions.Types;
 var services = new ServiceCollection();
 
 services.AddOptions<ApiSettings>();
-services.WithStllApiBridge(settings =>
+services.WithApiBridge(settings =>
 {
     settings.ApiUrl = "http://127.0.0.1:5000";
     settings.SessionsPath = "sessions/user.json";
@@ -34,6 +34,45 @@ var user = await stllApi.UsersBridge.GetAsync();
 
 Console.WriteLine($"Session created: {user.Success}");
 
+
+// try
+// {
+//     var url = new Uri("https://acme-v02.api.letsencrypt.org/");
+//     var directory = new AcmeServerDirectory();
+//     var acmeClient = new AcmeClient(url, directory);
+//     acmeClient.Init();
+//     var registrations = acmeClient.Register(new[] { "mailto:email@example.com" });
+//
+//     var authState = acmeClient.AuthorizeIdentifier("localhost:5000");
+//
+//     foreach (var challenge in authState.Challenges)
+//     {
+//         if (challenge.Type == "http-01")
+//         {
+//             var bytes = Encoding.UTF8.GetBytes("your_key");
+//             var signer = new RS256Signer(); 
+//             signer.Init();
+//             signer.Sign(bytes);
+//                     
+//             var challengeFilePath = Path.Combine("wwwroot", ".well-known", 
+//                 "acme-challenge", challenge.Token);
+//             var directoryPath = Path.GetDirectoryName(challengeFilePath);
+//             Directory.CreateDirectory(directoryPath);
+//             var challengeKey = challenge.GenerateHttpChallengeAnswer(null, signer);
+//             await File.WriteAllTextAsync(challengeFilePath, challengeKey.Value);
+//                     
+//             acmeClient.RefreshAuthorizeChallenge(authState, "http-01");
+//         }
+//     }
+//             
+//     var certBytes = acmeClient.RequestCertificate(registrations.)
+//     var cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(certBytes);
+//             
+// }
+// catch
+// {
+//     var registration = 
+// }
 
 #region OLD CODE
 
